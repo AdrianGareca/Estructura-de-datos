@@ -1,0 +1,36 @@
+#include <iostream>
+#include "stdlib.h"
+
+using namespace std;
+
+int fib(int n);
+
+int main(void) {
+    system("color 0a");
+    int nro;
+    cout << "\n\t\t[     RECURSIVIDAD     ]\n";
+    cout << "\t\t————————\n\n";
+    cout << " EJERCICIO 2: Encontrar el factorial de un numero " << endl << endl;
+    do {
+        cout << " INGRESE NUMERO: ";
+        cin >> nro;
+        if (nro < 0) cout << "\nINGRESE UN NUMERO ENTERO Y POSITIVO… \n";
+    } while (nro < 0);
+    cout << endl;
+    cout << "\n Numero:" << nro << endl;
+    cout << "\n fib:";
+    cout <<"El valor facotrial es"<<fib(nro);
+    return 0;
+}
+
+
+int fib(int n)
+
+{
+    if (n == 0)
+    
+        return 1;
+    else 
+        return fib(n-1)+fin(n-2),
+    
+}
