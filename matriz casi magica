@@ -11,7 +11,7 @@ void mostrar(int matrix[MAXROW][MAXCOL], int n, int m);
 void menor(int matrix[MAXROW][MAXCOL], int n, int m);
 void clasificar_fila(int matrix[MAXROW][MAXCOL], int n, int m);
 
-void main()
+int main()
 {
 	int n, m, matriz[MAXROW][MAXCOL];
 	// Validando las filas
@@ -30,7 +30,7 @@ void main()
 
 	cargar(matriz, n, m);
 	mostrar(matriz, n, m);
-	cout << "El mayor valor de la matriz es: " << menor(matriz, n, m)<<endl;
+	cout << "El menor valor de la matriz es: " << menor(matriz, n, m) << endl;
 	clasificar_fila(matriz, n, m);
 	mostrar(matriz, n, m);
 }
@@ -59,7 +59,7 @@ void mostrar(int matrix[MAXROW][MAXCOL], int n, int m)
 	}
 }
 
-int mayor(int matrix[MAXROW][MAXCOL], int n, int m)
+void menor(int matrix[MAXROW][MAXCOL], int n, int m)
 {
 	int tmenor, i, j;
 
@@ -71,15 +71,14 @@ int mayor(int matrix[MAXROW][MAXCOL], int n, int m)
 				tmenor = matrix[i][j];
 
 		}
-	return tmenor;
 }
 
-void clasificar_fila(int matrix[MAXROW][MAXCOL],int n, int m)
+void clasificar_fila(int matrix[MAXROW][MAXCOL], int n, int m)
 {
 	int aux;
 	for (int i = 0; i < n; i++)
-		for(int j = 0; j < m; j++)
-			for(int x = 0; x < n; x++)
+		for (int j = 0; j < m; j++)
+			for (int x = 0; x < n; x++)
 				for (int y = 0; y < m; y++)
 				{
 					if (matrix[i][j] < matrix[x][y])
@@ -90,4 +89,38 @@ void clasificar_fila(int matrix[MAXROW][MAXCOL],int n, int m)
 					}
 				}
 
+}
+
+bool matrizmagica(int matrix[MAXROW][MAXCOL], int n, int m, int suma, int magica)
+{
+			bool esMagico = true;
+			int i = 0;
+			{
+				int suma = 0;
+				for (int j = 0; j < m; j++) {
+					suma += matrix[i][j];
+				}
+				if (suma != magica) esMagico = false;
+				i++;
+			}
+
+			if (!esMagico) {
+				cout << "Los valores no son de matriz magica" << endl;
+				return 0;
+			}
+
+			int j = 0;
+			 {
+				int suma = 0;
+				for (int i = 0; i < n; i++) {
+					suma += matrix[i][j];
+				}
+				if (suma != magica) esMagico = false;
+				j++;
+			 }
+
+			if (!esMagico)  cout << "Los valores no son de una magica" << endl;
+			else cout << "Los valores SI es de una matriz magica" << endl;
+
+			return 0;
 }
